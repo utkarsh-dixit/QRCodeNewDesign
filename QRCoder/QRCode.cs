@@ -225,7 +225,7 @@ namespace QRCoder
             gfx1.DrawImage(bmp, new Rectangle(1512, 914, 2680, 2680));
            
             gfx1.Save();
-            return src3;
+            return new Bitmap(src3, new Size(src3.Width / 4, src3.Height / 4));
         }
     
         internal GraphicsPath CreateRoundedRectanglePath(RectangleF rect, int cornerRadius)
