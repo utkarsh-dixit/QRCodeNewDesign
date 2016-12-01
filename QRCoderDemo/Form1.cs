@@ -40,27 +40,7 @@ namespace QRCoderDemo
         QRCode mainQ = null;
         private void RenderQrCode()
         {
-            string level = "L";
-            QRCodeGenerator.ECCLevel eccLevel = (QRCodeGenerator.ECCLevel)(level == "L" ? 0 : level == "M" ? 1 : level == "Q" ? 2 : 3);
-            using (QRCodeGenerator qrGenerator = new QRCodeGenerator())
-            {
-                using (QRCodeData qrCodeData = qrGenerator.CreateQrCode(/* Custom domain change*/"bit.ly?" + textBoxQRCode.Text, eccLevel))
-                {
-                    using (QRCode qrCode = new QRCode(qrCodeData))
-                    {
-                        
-                        pictureBoxQRCode.BackgroundImage = qrCode.GetGraphic(20, Color.Black, Color.White,
-                             this.comboBox1.SelectedIndex,null, (int)1 );
-
-                         this.pictureBoxQRCode.Size = new System.Drawing.Size(pictureBoxQRCode.Width, pictureBoxQRCode.Height);
-                        //Set the SizeMode to center the image.
-                        this.pictureBoxQRCode.SizeMode = PictureBoxSizeMode.CenterImage;
-
-                        pictureBoxQRCode.SizeMode = PictureBoxSizeMode.StretchImage;
-                        mainQ = qrCode;
-                    }
-                }
-            }
+           
         }
         
       
@@ -115,10 +95,25 @@ namespace QRCoderDemo
                         default:
                             throw new NotSupportedException("File extension is not supported");
                     }
-                    Bitmap l = (Bitmap) pictureBoxQRCode.BackgroundImage;
-                     l =Transparent2Color(l, Color.FromArgb(255,255,255));
-                    Image la = (Image)l;
-                    la.Save(fs, imageFormat);
+                    string level = "L";
+                    QRCodeGenerator.ECCLevel eccLevel = (QRCodeGenerator.ECCLevel)(level == "L" ? 0 : level == "M" ? 1 : level == "Q" ? 2 : 3);
+                    using (QRCodeGenerator qrGenerator = new QRCodeGenerator())
+                    {
+                        using (QRCodeData qrCodeData = qrGenerator.CreateQrCode(/* Custom domain change*/"bit.ly?" + textBoxQRCode.Text, eccLevel))
+                        {
+                            using (QRCode qrCode = new QRCode(qrCodeData))
+                            {
+
+                               Image tase = qrCode.GetGraphic(20, Color.Black, Color.White,
+                                     this.comboBox1.SelectedIndex, null, (int)1);
+                                Bitmap l = (Bitmap)tase;
+                                l = Transparent2Color(l, Color.FromArgb(255, 255, 255));
+                                Image la = (Image)l;
+                                la.Save(fs, imageFormat);
+                            }
+                        }
+                    }
+                  
                     fs.Close();
                     return;
                 }
@@ -152,8 +147,6 @@ namespace QRCoderDemo
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (mainQ!=null)
-            {
 
             // Displays a SaveFileDialog so the user can save the Image
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
@@ -189,12 +182,29 @@ namespace QRCoderDemo
                         default:
                             throw new NotSupportedException("File extension is not supported");
                     }
+                    string level = "L";
+                    QRCodeGenerator.ECCLevel eccLevel = (QRCodeGenerator.ECCLevel)(level == "L" ? 0 : level == "M" ? 1 : level == "Q" ? 2 : 3);
+                    using (QRCodeGenerator qrGenerator = new QRCodeGenerator())
+                    {
+                        using (QRCodeData qrCodeData = qrGenerator.CreateQrCode(/* Custom domain change*/"bit.ly?" + textBoxQRCode.Text, eccLevel))
+                        {
+                            using (QRCode qrCode = new QRCode(qrCodeData))
+                            {
 
-                        mainQ.SaveQRCode.Save(fs, imageFormat);
+                                Image tase = qrCode.GetGraphicQR(20, Color.Black, Color.White,
+                                      this.comboBox1.SelectedIndex, null, (int)1);
+                                Bitmap l = (Bitmap)tase;
+                                l = Transparent2Color(l, Color.FromArgb(255, 255, 255));
+                                Image la = (Image)l;
+                                la.Save(fs, imageFormat);
+                            }
+                        }
+                    }
+
                     fs.Close();
+                    return;
                 }
             }
-        }
         }
 
     }
