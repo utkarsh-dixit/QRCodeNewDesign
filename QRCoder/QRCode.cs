@@ -353,7 +353,7 @@ namespace QRCoder
                             if (Math.Pow((ll.Left + ll.Right) / 2 - (r.Left + r.Right) / 2, 2) + Math.Pow((ll.Top + ll.Bottom) / 2 - (r.Top + r.Bottom) / 2, 2) < Math.Pow(ll.Width / 2, 2))
                             {
                                 lla = new Rectangle((int)(centerDest.X - 47), (int)((centerDest.Y - 8)), 540, 540);
-                                if (Math.Pow((ll.Left + ll.Right) / 2 - (r.Left + r.Right) / 2, 2) + Math.Pow((ll.Top + ll.Bottom) / 2 - (r.Top + r.Bottom) / 2, 2) <= Math.Pow(ll.Width / 2, 2))
+                                if (Math.Pow((lla.Left + lla.Right) / 2 - (r.Left + r.Right) / 2, 2) + Math.Pow((lla.Top + lla.Bottom) / 2 - (r.Top + r.Bottom) / 2, 2) <= Math.Pow(lla.Width / 2, 2))
                                 {
                                     //Bottom Part
                                     System.Drawing.Color col = bottomTopColor;

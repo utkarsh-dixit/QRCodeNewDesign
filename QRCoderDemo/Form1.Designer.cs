@@ -90,16 +90,17 @@
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "Design 1",
-            "Design 2",
-            "Design 3",
-            "Design 4"});
+            "Green Design",
+            "Blue Design",
+            "Orange Design",
+            "GreyScale Design"});
             this.comboBox1.Location = new System.Drawing.Point(40, 50);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 11;
             this.comboBox1.Text = "Design 1";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox1.SelectedIndex = 0;
             // 
             // button1
             // 
